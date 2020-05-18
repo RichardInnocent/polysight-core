@@ -1,4 +1,4 @@
-package org.richardinnocent.polysight.core.client;
+package org.richardinnocent.polysight.core.client.service;
 
 import java.util.Objects;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -7,7 +7,6 @@ public class PolysightServiceConfiguration {
 
   private final String baseUri;
   private final ServiceVersion version;
-  private final RestTemplateBuilder templateBuilder;
 
   /**
    * Creates a new service configuration.
@@ -22,8 +21,6 @@ public class PolysightServiceConfiguration {
       throws NullPointerException {
     this.baseUri = transformBaseUri(Objects.requireNonNull(baseUri, "Base URI is null"));
     this.version = Objects.requireNonNull(version, "Version is null");
-    this.templateBuilder =
-        Objects.requireNonNull(templateBuilder, "REST template builder is null");
   }
 
   private String transformBaseUri(String uri) {
@@ -50,15 +47,6 @@ public class PolysightServiceConfiguration {
     return version;
   }
 
-  /**
-   * The template builder for building REST API requests. This can contain configuration such as
-   * timeout settings.
-   * @return The template for building REST API requests.
-   */
-  public RestTemplateBuilder getTemplateBuilder() {
-    return templateBuilder;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -68,13 +56,11 @@ public class PolysightServiceConfiguration {
       return false;
     }
     PolysightServiceConfiguration that = (PolysightServiceConfiguration) o;
-    return Objects.equals(baseUri, that.baseUri) &&
-        Objects.equals(version, that.version) &&
-        Objects.equals(templateBuilder, that.templateBuilder);
+    return Objects.equals(baseUri, that.baseUri) && Objects.equals(version, that.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(baseUri, version, templateBuilder);
+    return Objects.hash(baseUri, version);
   }
 }

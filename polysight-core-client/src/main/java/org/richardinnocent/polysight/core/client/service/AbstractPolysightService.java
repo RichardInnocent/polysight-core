@@ -1,7 +1,6 @@
-package org.richardinnocent.polysight.core.client;
+package org.richardinnocent.polysight.core.client.service;
 
 import java.util.Objects;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * Abstract implementation of {@link PolysightService}, with some basic implementations.
@@ -10,7 +9,6 @@ public abstract class AbstractPolysightService implements PolysightService {
 
   private final String baseUri;
   private final ServiceVersion version;
-  protected final RestTemplate template;
 
   /**
    * Creates a new {@link PolysightService} with the given configuration.
@@ -20,7 +18,6 @@ public abstract class AbstractPolysightService implements PolysightService {
     Objects.requireNonNull(configuration, "Configuration is null");
     this.baseUri = configuration.getBaseUri();
     this.version = configuration.getVersion();
-    this.template = configuration.getTemplateBuilder().build();
   }
 
   @Override

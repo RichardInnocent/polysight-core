@@ -17,8 +17,8 @@
     </properties>
 
     <modules>
-        <module>common</module>
-        <module>client</module>
+        <module>polysight-core-common</module>
+        <module>polysight-core-client</module>
     </modules>
 
 </project>

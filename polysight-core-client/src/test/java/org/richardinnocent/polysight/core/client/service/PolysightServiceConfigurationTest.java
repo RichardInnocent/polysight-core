@@ -1,4 +1,4 @@
-package org.richardinnocent.polysight.core.client;
+package org.richardinnocent.polysight.core.client.service;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -20,7 +20,6 @@ public class PolysightServiceConfigurationTest {
         new PolysightServiceConfiguration(baseUri, version, templateBuilder);
     assertEquals(baseUri, config.getBaseUri());
     assertEquals(version, config.getVersion());
-    assertEquals(templateBuilder, config.getTemplateBuilder());
   }
 
   @Test
@@ -33,18 +32,12 @@ public class PolysightServiceConfigurationTest {
         new PolysightServiceConfiguration(" " + baseUri + "/ ", version, templateBuilder);
     assertEquals(baseUri, config.getBaseUri());
     assertEquals(version, config.getVersion());
-    assertEquals(templateBuilder, config.getTemplateBuilder());
   }
 
   @Test
   public void testEqualsAndHashCode() {
     EqualsVerifier.forClass(PolysightServiceConfiguration.class)
                   .suppress(Warning.STRICT_INHERITANCE)
-                  .withPrefabValues(
-                      RestTemplateBuilder.class,
-                      mock(RestTemplateBuilder.class),
-                      mock(RestTemplateBuilder.class)
-                  )
                   .verify();
   }
 

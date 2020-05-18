@@ -1,4 +1,4 @@
-package org.richardinnocent.polysight.core.client;
+package org.richardinnocent.polysight.core.client.service;
 
 /**
  * Specifies which version of a service is targeted. This affects which how any requests are formed,

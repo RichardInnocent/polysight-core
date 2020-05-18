@@ -1,4 +1,4 @@
-package org.richardinnocent.polysight.core.client;
+package org.richardinnocent.polysight.core.client.service;
 
 import static org.junit.Assert.*;
 
