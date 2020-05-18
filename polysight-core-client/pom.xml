@@ -44,8 +44,8 @@
   <dependencies>
 
     <dependency>
-      <groupId>org.richardinnocent.polysight.core</groupId>
-      <artifactId>common</artifactId>
+      <groupId>org.richardinnocent.polysight</groupId>
+      <artifactId>polysight-core-common</artifactId>
       <version>0.0.1-ALPHA</version>
     </dependency>
 
