@@ -1,4 +1,4 @@
-package org.richardinnocent.polysight.core.client;
+package org.richardinnocent.polysight.core.client.service;
 
 /**
  * Presents a set of methods for interacting with an external Polysight service.

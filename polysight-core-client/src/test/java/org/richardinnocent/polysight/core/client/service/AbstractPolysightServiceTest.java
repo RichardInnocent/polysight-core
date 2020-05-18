@@ -1,4 +1,4 @@
-package org.richardinnocent.polysight.core.client;
+package org.richardinnocent.polysight.core.client.service;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -21,13 +21,11 @@ public class AbstractPolysightServiceTest {
     PolysightServiceConfiguration serviceConfiguration = mock(PolysightServiceConfiguration.class);
     when(serviceConfiguration.getBaseUri()).thenReturn(baseUri);
     when(serviceConfiguration.getVersion()).thenReturn(version);
-    when(serviceConfiguration.getTemplateBuilder()).thenReturn(templateBuilder);
 
     AbstractPolysightService service = new AbstractPolysightService(serviceConfiguration) {};
 
     assertEquals(baseUri, service.getBaseUri());
     assertEquals(version, service.getVersion());
-    assertEquals(template, service.template);
   }
 
   @Test
@@ -38,7 +36,6 @@ public class AbstractPolysightServiceTest {
     PolysightServiceConfiguration serviceConfiguration = mock(PolysightServiceConfiguration.class);
     when(serviceConfiguration.getBaseUri()).thenReturn(baseUri);
     when(serviceConfiguration.getVersion()).thenReturn(() -> versionUri);
-    when(serviceConfiguration.getTemplateBuilder()).thenReturn(mock(RestTemplateBuilder.class));
 
     AbstractPolysightService service = new AbstractPolysightService(serviceConfiguration) {};
 
