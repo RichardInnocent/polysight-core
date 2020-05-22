@@ -1,7 +1,6 @@
 package org.richardinnocent.polysight.core.client.service;
 
 import java.util.Objects;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 
 public class PolysightServiceConfiguration {
 
@@ -13,11 +12,8 @@ public class PolysightServiceConfiguration {
    * @param baseUri The base URI of the service, e.g. {@code https://myservice.com}. If a trailing
    * {@code /} is detected, it will be removed.
    * @param version The version of the service.
-   * @param templateBuilder The template for building API requests. This can contain configuration
-   * such as timeout settings.
    */
-  public PolysightServiceConfiguration(
-      String baseUri, ServiceVersion version, RestTemplateBuilder templateBuilder)
+  public PolysightServiceConfiguration(String baseUri, ServiceVersion version)
       throws NullPointerException {
     this.baseUri = transformBaseUri(Objects.requireNonNull(baseUri, "Base URI is null"));
     this.version = Objects.requireNonNull(version, "Version is null");
