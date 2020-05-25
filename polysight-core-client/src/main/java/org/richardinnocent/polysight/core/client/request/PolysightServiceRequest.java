@@ -2,6 +2,7 @@ package org.richardinnocent.polysight.core.client.request;
 
 import org.richardinnocent.polysight.core.client.service.PolysightService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestClientException;
 
 /**
  * A request to a Polysight service.
@@ -15,6 +16,7 @@ public interface PolysightServiceRequest<S extends PolysightService, R> {
   /**
    * Executes the request.
    * @return The result of the request.
+   * @throws RestClientException Thrown if there is a problem executing the request.
    */
-  ResponseEntity<R> execute();
+  ResponseEntity<R> execute() throws RestClientException;
 }

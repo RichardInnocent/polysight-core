@@ -3,6 +3,7 @@ package org.richardinnocent.polysight.core.client.request;
 import org.richardinnocent.polysight.core.client.service.PolysightService;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -36,10 +37,18 @@ public abstract class RestTemplateServiceRequest<S extends PolysightService, R>
   @SuppressWarnings("unused")
   protected void modifyTemplate(RestTemplateBuilder templateBuilder) {}
 
-  public final ResponseEntity<R> execute() {
+  public final ResponseEntity<R> execute() throws RestClientException {
     return executeInternal(service, template);
   }
 
-  protected abstract ResponseEntity<R> executeInternal(S service, RestTemplate template);
+  /**
+   * Executes the request.
+   * @param service The service which should be used to action the request.
+   * @param template The template to use.
+   * @return The request response.
+   * @throws RestClientException Thrown if there is a problem executing the request.
+   */
+  protected abstract ResponseEntity<R> executeInternal(S service, RestTemplate template)
+      throws RestClientException;
 
 }
