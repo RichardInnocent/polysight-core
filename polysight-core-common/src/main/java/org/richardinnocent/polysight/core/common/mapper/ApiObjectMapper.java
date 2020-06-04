@@ -1,5 +1,6 @@
 package org.richardinnocent.polysight.core.common.mapper;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import org.richardinnocent.polysight.core.common.mapper.modules.LocalDateModule;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,6 +16,7 @@ public class ApiObjectMapper extends ObjectMapper {
    * requests/responses, registering the appropriate modules.
    */
   public ApiObjectMapper() {
+    setSerializationInclusion(Include.NON_NULL);
     registerModule(new JodaModule());
     registerModule(new LocalDateModule());
   }

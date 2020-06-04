@@ -1,5 +1,6 @@
 package org.richardinnocent.polysight.core.client.request;
 
+import java.util.Objects;
 import org.richardinnocent.polysight.core.client.service.PolysightService;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,16 @@ public abstract class RestTemplateServiceRequest<S extends PolysightService, R>
 
   private final S service;
   private final RestTemplate template;
+
+  /**
+   * Creates a new {@link PolysightService} that uses Spring's {@link RestTemplate} to execute
+   * requests.
+   * @param service The service to execute the request against.
+   */
+  @SuppressWarnings("unused")
+  public RestTemplateServiceRequest(S service) {
+    this(service, new RestTemplateBuilder());
+  }
 
   /**
    * Creates a new {@link PolysightService} that uses Spring's {@link RestTemplate} to execute
@@ -51,4 +62,21 @@ public abstract class RestTemplateServiceRequest<S extends PolysightService, R>
   protected abstract ResponseEntity<R> executeInternal(S service, RestTemplate template)
       throws RestClientException;
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof RestTemplateServiceRequest)) {
+      return false;
+    }
+    RestTemplateServiceRequest<?, ?> that = (RestTemplateServiceRequest<?, ?>) o;
+    return Objects.equals(service, that.service) &&
+        Objects.equals(template, that.template);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(service, template);
+  }
 }

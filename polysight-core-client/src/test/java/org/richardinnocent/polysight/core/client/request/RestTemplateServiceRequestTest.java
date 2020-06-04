@@ -3,6 +3,8 @@ package org.richardinnocent.polysight.core.client.request;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.Warning;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
@@ -20,6 +22,13 @@ public class RestTemplateServiceRequestTest {
   @Before
   public void setUpBuilder() {
     when(templateBuilder.build()).thenReturn(template);
+  }
+
+  @Test
+  public void testEqualsAndHashCode() {
+    EqualsVerifier.forClass(RestTemplateServiceRequest.class)
+                  .suppress(Warning.STRICT_INHERITANCE)
+                  .verify();
   }
 
   @Test

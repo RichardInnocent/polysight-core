@@ -2,6 +2,9 @@ package org.richardinnocent.polysight.core.client.service;
 
 import java.util.Objects;
 
+/**
+ * Defines the configuration for a server, specifying how to communicate with it.
+ */
 public class PolysightServiceConfiguration {
 
   private final String baseUri;

@@ -4,11 +4,20 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.Warning;
 import org.junit.Test;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
 
 public class AbstractPolysightServiceTest {
+
+  @Test
+  public void testEqualsAndHashCode() {
+    EqualsVerifier.forClass(AbstractPolysightService.class)
+                  .suppress(Warning.STRICT_INHERITANCE)
+                  .verify();
+  }
 
   @Test
   public void testFieldsAreSetCorrectlyFromConstructor() {
