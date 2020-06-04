@@ -28,4 +28,23 @@ public class ApiObjectMapperTest {
     );
   }
 
+  @Test
+  public void testNullValuesAreNotIncludedInTheSerialisation() throws JsonProcessingException {
+    @SuppressWarnings("unused")
+    class Data {
+      private final String populatedValue = "populated";
+      private final String emptyValue = null;
+
+      public String getPopulatedValue() {
+        return populatedValue;
+      }
+
+      public String getEmptyValue() {
+        return emptyValue;
+      }
+    }
+
+    assertEquals("{\"populatedValue\":\"populated\"}", MAPPER.writeValueAsString(new Data()));
+  }
+
 }

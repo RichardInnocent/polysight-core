@@ -35,4 +35,21 @@ public abstract class AbstractPolysightService implements PolysightService {
     return baseUri + "/api/" + version.getUriForm();
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof AbstractPolysightService)) {
+      return false;
+    }
+    AbstractPolysightService that = (AbstractPolysightService) o;
+    return Objects.equals(baseUri, that.baseUri) &&
+        Objects.equals(version, that.version);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(baseUri, version);
+  }
 }
