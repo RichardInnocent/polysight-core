@@ -6,7 +6,7 @@
 
   <groupId>org.richardinnocent.polysight</groupId>
   <artifactId>polysight-core-client</artifactId>
-  <version>0.0.3-ALPHA</version>
+  <version>0.0.4-ALPHA</version>
 
   <name>polysight-core-client</name>
   <description>A common library for Polysight client implementations to use.</description>
